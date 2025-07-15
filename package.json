@@ -1,0 +1,49 @@
+{
+  "name": "flutter-webview-bridge",
+  "version": "1.0.0",
+  "description": "A TypeScript/React bridge for seamless communication between Flutter WebView and web applications",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "flutter",
+    "webview",
+    "bridge",
+    "react",
+    "typescript",
+    "communication",
+    "messageport",
+    "hybrid-app"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/flutter-webview-bridge"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/flutter-webview-bridge/issues"
+  },
+  "homepage": "https://github.com/yourusername/flutter-webview-bridge#readme",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "react": "^18.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
