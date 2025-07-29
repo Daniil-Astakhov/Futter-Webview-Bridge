@@ -175,4 +175,4 @@ export class FlutterBridge {
 }
 
 // Export a singleton instance of the bridge with debug enabled by default
-export const flutterBridge = new FlutterBridge({ debug: true });
+export const flutterBridge = new FlutterBridge({ debug: false });

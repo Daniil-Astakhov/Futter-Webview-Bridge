@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import {
   flutterBridge,
   FlutterBridge,
@@ -32,10 +32,24 @@ export function useFlutterBridge(
     () => bridge.getConnectionStatus()
   );
 
+  // Ref для хранения таймера очистки сообщения
+  const clearMessageTimeoutRef = useRef<number | null>(null);
+
   useEffect(() => {
     const handleMessage = (message: unknown) => {
+      // Очищаем предыдущий таймер если он был
+      if (clearMessageTimeoutRef.current) {
+        clearTimeout(clearMessageTimeoutRef.current);
+      }
+
       setLastMessage(message);
       onMessage?.(message);
+
+      // Устанавливаем таймер для очистки сообщения через 1 секунду
+      clearMessageTimeoutRef.current = setTimeout(() => {
+        setLastMessage(null);
+        clearMessageTimeoutRef.current = null;
+      }, 1000);
     };
 
     // Subscribe to messages when the component mounts.
@@ -50,6 +64,10 @@ export function useFlutterBridge(
     return () => {
       unsubscribe();
       clearInterval(statusInterval);
+      // Очищаем таймер при размонтировании
+      if (clearMessageTimeoutRef.current) {
+        clearTimeout(clearMessageTimeoutRef.current);
+      }
     };
   }, [bridge, onMessage]);
 

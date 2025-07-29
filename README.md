@@ -75,12 +75,6 @@ import { useFlutterBridge } from "flutter-webview-bridge";
 function MyComponent() {
   const { sendMessage, lastMessage, isConnected } = useFlutterBridge();
 
-  useEffect(() => {
-    if (lastMessage) {
-      console.log("Received from Flutter:", lastMessage);
-    }
-  }, [lastMessage]);
-
   const handleSendMessage = () => {
     sendMessage({
       type: "greeting",
@@ -307,10 +301,4 @@ const options: FlutterBridgeOptions = {
 
 ## License
 
-MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-- 🐛 [Report Issues](https://github.com/yourusername/flutter-webview-bridge/issues)
-- 💬 [Discussions](https://github.com/yourusername/flutter-webview-bridge/discussions)
-- 📧 [Email Support](mailto:support@example.com)
+MIT License
